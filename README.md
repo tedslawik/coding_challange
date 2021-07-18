@@ -29,8 +29,8 @@ The site includes:
 
 
 ## Main 3 features of Customer page which should be tested
-*Searching by value and column
-*Searching with Match-Case feature 
-*Displaying help prompt with filtered values
+* Searching by value and column
+* Searching with Match-Case feature 
+* Displaying help prompt with filtered values
 
 
