@@ -12,6 +12,7 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 demo-env.iml
+build
 
 
 # Gradle and Maven with auto-import
