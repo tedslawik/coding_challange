@@ -7,9 +7,7 @@ import io.cucumber.java.Before;
 public class ConfigHook {
 
     @Before
-
     public void setUpFramework(){
-        System.out.println("jestem tu");
         GlobalConfig.setUp();
     }
 }

@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"classpath:features"},
+        features = {"classpath:features/OpenCustomers.feature"},
         glue = {"coding.challenge.steps"},
         plugin = {"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
 )

@@ -14,9 +14,7 @@ public class GlobalConfig {
 
     private GlobalConfig() {
     }
-
     public static void setUp() {
-
         if (INSTANCE == null) {
             log.info("Setting up Global framework config for coding challenge ");
             INSTANCE = new GlobalConfig();
@@ -29,10 +27,6 @@ public class GlobalConfig {
             Configuration.holdBrowserOpen = true;
         }
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
-
-
-
-
     }
 
     public static Config loadConfig(){
@@ -40,6 +34,4 @@ public class GlobalConfig {
 
     return ConfigFactory.load().withFallback(defaultConfig);
     }
-
-
 }
