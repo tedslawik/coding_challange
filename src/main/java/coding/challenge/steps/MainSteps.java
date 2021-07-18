@@ -28,7 +28,7 @@ public class MainSteps {
     }
 
     @When("user selects {string} in search dropdown")
-    public void userSelectsIdInSearchDropdown(String type) {
+    public void userSelectsSearchColumn(String type) {
         worldProperPrompt.setAllElements(mainPage.customersList().size());
         worldProperPrompt.setColumnSearch(type);
         mainPage.searchDropDown().click();
@@ -42,11 +42,6 @@ public class MainSteps {
         worldProperPrompt.setElementsAfterSearch(mainPage.customersList().size());
     }
 
-    @When("user should see customer")
-    public void userShouldSeeCustomer(Map<String, String> dataUser) {
-
-    }
-
     @When("user should see customer List")
     public void userShouldSeeCustomerList(List<String> users) {
         assertThat(mainPage.customersList().size()).isEqualTo(1);
@@ -54,19 +49,17 @@ public class MainSteps {
     }
 
 
-    @Then("user should see proper prompt with numbers of customers on the list.")
+    @Then("user should see proper prompt with numbers of customers on the list")
     public void userShouldSeeProperPromptWithNumbersOfCustomersOnTheList() {
         int noOfElements = mainPage.customersList().size();
         String properPrompt = "Showing " + noOfElements + " of " + noOfElements + " customers";
-        //Showing 3 of 3 customers
+        //Showing x of x customers
         assertThat(mainPage.resumeOfCustomerList().text()).isEqualTo(properPrompt);
     }
 
     @Then("user should see proper prompt")
-    public void userShouldSeeProperPrompt() {
+    public void userShouldSeeProperPrompt() throws InterruptedException {
         String actualPrompt = mainPage.resumeOfCustomerList().text() + " " + mainPage.searchSloganResult().getText().replace("click to clear filters", "").replace("\n", "");
-        System.out.println(actualPrompt);
-        System.out.println(worldProperPrompt.properPrompt());
         assertThat(worldProperPrompt.properPrompt()).isEqualTo(actualPrompt);
 
     }
@@ -75,11 +68,14 @@ public class MainSteps {
     public void userActivatesMatchCase() {
         worldProperPrompt.setMatchCase(true);
         mainPage.matchCaseCheckbox().click();
+        worldProperPrompt.setElementsAfterSearch(mainPage.customersList().size());
     }
 
     @When("user searches by value")
     public void userSearchesByValue(Map<String, String> data) {
         worldProperPrompt.setAllElements(mainPage.customersList().size());
+        worldProperPrompt.setTerm(data.get("value"));
+        worldProperPrompt.setColumnSearch(data.get("column"));
         mainPage.searchInput().setValue(data.get("value"));
         mainPage.searchDropDown().click();
         mainPage.searchDropDownOption(data.get("column")).click();
